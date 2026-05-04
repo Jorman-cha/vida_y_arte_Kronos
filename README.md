@@ -1,46 +1,44 @@
-# 🎨 Sistema de Gestión Académica - Fundación Vida y Arte
+# 🎨 Kronos - Sistema de Gestión Académica | Fundación Vida y Arte
 
-![Status](https://img.shields.io/badge/Status-En%20Desarrollo-green)
-![Version](https://img.shields.io/badge/Version-1.0.0-blue)
+![Flask](https://img.shields.io/badge/Framework-Flask-black?style=flat-square&logo=flask)
+![Bootstrap](https://img.shields.io/badge/Frontend-Bootstrap_5-purple?style=flat-square&logo=bootstrap)
+![MySQL](https://img.shields.io/badge/DB-MySQL-blue?style=flat-square&logo=mysql)
 
-## 📌 Sobre el Proyecto
-Este aplicativo nace de la necesidad de migrar la gestión académica de la **Fundación Vida y Arte**, que anteriormente dependía de archivos de Excel, hacia una plataforma web centralizada. El sistema permite gestionar horarios, docentes y alumnos de forma eficiente, garantizando la integridad de la información mediante una base de datos normalizada (3NF).
+## 📌 Descripción del Proyecto
+Este aplicativo web surge de la necesidad de modernizar la administración de la **Fundación Vida y Arte**, migrando la gestión de datos de archivos Excel a una plataforma centralizada y robusta. 
+
+**Kronos** permite la organización en tiempo real de estudiantes, profesores y recursos académicos, eliminando la duplicidad de información y garantizando la integridad de los datos mediante una arquitectura de base de datos normalizada (3NF).
 
 ## 🚀 Funcionalidades Principales
 
-### 🌐 Portal Informativo
-* Página de aterrizaje con información pública sobre la misión, visión y programas de la Fundación.
+### 🔐 Control de Acceso por Roles (RBAC)
+El sistema personaliza la experiencia según el perfil del usuario:
+*   **Administrador:** Posee control total (CRUD) sobre usuarios, programas y horarios. Es el encargado de "armar el rompecabezas" académico sin cruces de horarios.
+*   **Profesor:** Visualiza su agenda personalizada, las materias teóricas dictadas y los instrumentos a su cargo.
+*   **Estudiante:** Acceso a su horario de clases y consulta de los instrumentos o materias en los que está inscrito.
 
-### 🔐 Sistema de Autenticación por Roles
-El acceso a las funcionalidades internas depende del perfil del usuario:
+### 🎼 Gestión Especializada de Programas
+El sistema diferencia automáticamente la lógica de enseñanza:
+*   **Programa de Líderes:** Gestión orientada a materias teóricas.
+*   **Programa de Instrumentos:** Gestión orientada a la práctica instrumental.
 
-*   **Panel de Administrador (C.R.U.D. Total):** 
-    * Gestión completa de la base de datos.
-    * Creación y edición de Usuarios (Admin, Profesores, Estudiantes).
-    * Configuración de Programas (Líderes e Instrumentos).
-    * Asignación de Clases y organización de Horarios/Salones.
-*   **Panel de Profesor:**
-    * Visualización de agenda personalizada.
-    * Consulta de materias e instrumentos asignados.
-*   **Panel de Estudiante:**
-    * Visualización de horario de clases.
-    * Consulta de información personal e instrumentos/materias inscritas.
+## 🛠️ Stack Tecnológico
+*   **Backend:** Python con **Flask** (Uso de Blueprints para modularidad).
+*   **Frontend:** HTML5, CSS3 (Custom) y **Bootstrap 5** para diseño responsivo.
+*   **Base de Datos:** MySQL (Configurada por defecto en el puerto **3307**).
+*   **Lógica de Interfaz:** JavaScript para menús laterales colapsables y dinamismo.
 
-## 🛠️ Arquitectura de Datos
-El sistema utiliza una base de datos relacional diseñada bajo la **Tercera Forma Normal (3NF)** para evitar redundancias.
+## 📁 Estructura del Repositorio
+*   `/app`: Carpeta principal de la aplicación.
+    *   `/static`: Archivos CSS, JS e imágenes (Logo, fondos, perfiles).
+    *   `/templates`: Plantillas HTML con sistema de herencia (`layout.html`).
+*   `run.py`: Script principal de ejecución del servidor Flask.
+*   `config.py`: Parámetros de conexión a la DB `gestion_horarios`.
+*   `rundb.py`: Utilidad para verificar el estado de la conexión a la base de datos.
 
-**Entidades principales:**
-* `Persona` / `Usuario`: Gestión de identidad y acceso.
-* `Programa`: Diferenciación entre programas teóricos (Líderes) y prácticos (Instrumentos).
-* `Clase` / `Horario`: El núcleo del sistema de agendamiento.
+## ⚙️ Instalación y Ejecución
 
-## 🏗️ Tecnologías Sugeridas
-* **Frontend:** [Ej: React / Vue / Angular]
-* **Backend:** [Ej: Node.js / Python / PHP]
-* **Base de Datos:** PostgreSQL o MySQL.
-
-## 📝 Instalación (Próximamente)
-```bash
-git clone [https://github.com/tu-usuario/fundacion-vida-arte.git](https://github.com/tu-usuario/fundacion-vida-arte.git)
-cd fundacion-vida-arte
-npm install
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/tu-usuario/fundacion-vida-arte.git](https://github.com/tu-usuario/fundacion-vida-arte.git)
+   cd fundacion-vida-arte
