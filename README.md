@@ -1,44 +1,58 @@
-# 🎨 Kronos - Sistema de Gestión Académica | Fundación Vida y Arte
+# 🎨 Kronos - Sistema de Gestión Académica
 
-![Flask](https://img.shields.io/badge/Framework-Flask-black?style=flat-square&logo=flask)
-![Bootstrap](https://img.shields.io/badge/Frontend-Bootstrap_5-purple?style=flat-square&logo=bootstrap)
-![MySQL](https://img.shields.io/badge/DB-MySQL-blue?style=flat-square&logo=mysql)
+> **Fundación Vida y Arte**: Aplicación web integral para la digitalización y automatización de procesos académicos, migrando de archivos Excel a una plataforma centralizada, segura y escalable.
 
-## 📌 Descripción del Proyecto
-Este aplicativo web surge de la necesidad de modernizar la administración de la **Fundación Vida y Arte**, migrando la gestión de datos de archivos Excel a una plataforma centralizada y robusta. 
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
-**Kronos** permite la organización en tiempo real de estudiantes, profesores y recursos académicos, eliminando la duplicidad de información y garantizando la integridad de los datos mediante una arquitectura de base de datos normalizada (3NF).
+---
 
-## 🚀 Funcionalidades Principales
+## 📋 Descripción
 
-### 🔐 Control de Acceso por Roles (RBAC)
-El sistema personaliza la experiencia según el perfil del usuario:
-*   **Administrador:** Posee control total (CRUD) sobre usuarios, programas y horarios. Es el encargado de "armar el rompecabezas" académico sin cruces de horarios.
-*   **Profesor:** Visualiza su agenda personalizada, las materias teóricas dictadas y los instrumentos a su cargo.
-*   **Estudiante:** Acceso a su horario de clases y consulta de los instrumentos o materias en los que está inscrito.
+**Kronos** es una solución tecnológica diseñada para modernizar la administración de la **Fundación Vida y Arte**. El sistema centraliza la información de estudiantes, profesores, materias e instrumentos, garantizando la integridad de los datos mediante una arquitectura de base de datos normalizada (**3NF**).
 
-### 🎼 Gestión Especializada de Programas
-El sistema diferencia automáticamente la lógica de enseñanza:
-*   **Programa de Líderes:** Gestión orientada a materias teóricas.
-*   **Programa de Instrumentos:** Gestión orientada a la práctica instrumental.
+El aplicativo ofrece interfaces personalizadas según el rol del usuario (RBAC), permitiendo un control total del flujo académico (CRUD) para administradores, mientras que docentes y alumnos acceden a sus horarios en tiempo real.
+
+---
+
+## ✨ Funcionalidades Principales
+
+* 🔐 **Sistema de Roles (RBAC)**: Paneles diferenciados para Administrador, Profesor y Estudiante.
+* 📅 **Motor de Horarios**: Gestión y asignación de clases vinculadas a salones y docentes para evitar cruces.
+* 🎼 **Segmentación por Programas**: Control independiente para **Líderes** (Teórico) e **Instrumentos** (Práctico).
+* 👤 **Gestión de Usuarios (CRUD)**: Interfaz administrativa para crear, buscar, editar y eliminar perfiles.
+* 🌐 **Portal Informativo**: Landing page dinámica con carrusel de novedades y eventos.
+* 📱 **Diseño Responsivo**: Interfaz adaptativa con **Bootstrap 5** y sidebar colapsable.
+
+---
 
 ## 🛠️ Stack Tecnológico
-*   **Backend:** Python con **Flask** (Uso de Blueprints para modularidad).
-*   **Frontend:** HTML5, CSS3 (Custom) y **Bootstrap 5** para diseño responsivo.
-*   **Base de Datos:** MySQL (Configurada por defecto en el puerto **3307**).
-*   **Lógica de Interfaz:** JavaScript para menús laterales colapsables y dinamismo.
 
-## 📁 Estructura del Repositorio
-*   `/app`: Carpeta principal de la aplicación.
-    *   `/static`: Archivos CSS, JS e imágenes (Logo, fondos, perfiles).
-    *   `/templates`: Plantillas HTML con sistema de herencia (`layout.html`).
-*   `run.py`: Script principal de ejecución del servidor Flask.
-*   `config.py`: Parámetros de conexión a la DB `gestion_horarios`.
-*   `rundb.py`: Utilidad para verificar el estado de la conexión a la base de datos.
+| Capa | Tecnología | Propósito |
+| :--- | :--- | :--- |
+| **Frontend** | HTML5, CSS3, JavaScript | UI dinámica y lógica del lado del cliente. |
+| **Backend** | **Flask** (Python) | Lógica de servidor, ruteo y Blueprints. |
+| **Plantillas** | Jinja2 | Renderizado dinámico y herencia de componentes. |
+| **Estilos** | Bootstrap 5 | Maquetación visual responsiva. |
+| **Base de Datos** | **MySQL** | Almacenamiento relacional (Normalización 3NF). |
 
-## ⚙️ Instalación y Ejecución
+---
 
-1. **Clonar el repositorio:**
-   ```bash
-   git clone [https://github.com/tu-usuario/fundacion-vida-arte.git](https://github.com/tu-usuario/fundacion-vida-arte.git)
-   cd fundacion-vida-arte
+## 📁 Estructura del Proyecto
+
+```text
+kronos/
+├── run.py                  # Punto de entrada de la aplicación
+├── config.py               # Configuración de DB (Puerto: 3307)
+├── rundb.py                # Script de verificación de conexión
+├── app/
+│   ├── static/             # CSS, JS, Imágenes
+│   │   ├── css/styles.css  
+│   │   └── js/scripts.js   
+│   └── templates/          # Vistas (Jinja2)
+│       ├── layout.html     # Plantilla base
+│       ├── perfil.html     # Dashboard con menú lateral
+│       ├── bus.html        # Gestión de usuarios (CRUD)
+│       └── plantillas/     # Componentes reutilizables (menu, pie)
