@@ -177,7 +177,7 @@ Abre tu navegador en: `http://127.0.0.1:5000`
 | Brandon Rodriguez Garcia | Desarrollador |
 | Jorman Nicolay Chaves Orjuela | Desarrollador |
 | Janny Andreina Rodriguez Requena | Desarrolladora |
-| Yudy Jasmin Tovar Fuentes | Desarrolladora |
+| Yudy Jasmin Tovar Fuentes | "ayudante" |
 
 **Tutor:** José Miguel Santana Cárdenas  
 **Asignatura:** Programación Web · NRC 85406  
