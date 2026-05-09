@@ -1,0 +1,67 @@
+<!-- LLamar al layout -->
+
+{% extends 'layout.html' %}
+
+<!-- titulo de la pestaña -->
+{% block titulo %} Inicio de Sesion{% endblock %}
+
+<!-- informacion -->
+
+{% block informacion %}
+
+<!-- Llamar menu.html -->
+
+<section id="menu">
+    {% include 'pagina/plantillas/menu.html' %}
+</section>
+<div class="contenedor">
+    <section id="aside">
+        {% include 'pagina/plantillas/aside.html' %}
+    </section>
+    <section class="py-5" id="BusUsu">
+        <div class="TituBus">
+            <h2>Buscar Estudiantes/Profesores</h2>
+            <span>{{ usuarios|length }} Estudiantes/Profesores registrados</span>
+        </div>
+        <div class="BusTabla">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Contraseña</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in usuarios %}
+                    <tr>
+                        <th scope="row">{{ u.id }}</th>
+                        <td>{{ u.nombre }}</td>
+                        <td>{{ u.correo }}</td>
+                        <td>{{ u.password }}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-success">Editar</button>
+                                <button type="button" class="btn btn-danger">Eliminar</button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <th scope="row">No hay usuarios para mostrar</th>>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+
+<section id="pie">
+    {% include 'pagina/plantillas/pie.html' %}
+</section>
+
+{% endblock %}

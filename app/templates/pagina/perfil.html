@@ -1,0 +1,35 @@
+<!-- LLamar al layout -->
+
+{% extends 'layout.html' %}
+
+<!-- titulo de la pestaña -->
+{% block titulo %} Inicio de Sesion{% endblock %}
+
+<!-- informacion -->
+
+{% block informacion %}
+
+<!-- Llamar menu.html -->
+
+<section id="menu">
+  {% include 'pagina/plantillas/menu.html' %}
+</section>
+<div class="contenedor">
+  <!--Llamar a aside.html(menu lateral)-->
+  <section id="aside">
+    {% include 'pagina/plantillas/aside.html' %}
+  </section>
+
+  <div id="perfilAd">
+    <img id="FoPer" src="{{url_for('static',filename='/img/Perfil.png')}}" alt="Foto Perfil">
+    <h2>{{ session['user_name'] }}</h2>
+  </div>
+</div>
+
+
+
+<section id="pie">
+  {% include 'pagina/plantillas/pie.html' %}
+</section>
+
+{%endblock%}

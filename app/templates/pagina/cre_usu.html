@@ -1,0 +1,138 @@
+<!-- LLamar al layout -->
+
+{% extends 'layout.html' %}
+
+<!-- titulo de la pestaña -->
+{% block titulo %} Inicio de Sesion{% endblock %}
+
+<!-- informacion -->
+
+{% block informacion %}
+
+<section id="menu">
+    {% include 'pagina/plantillas/menu.html' %}
+</section>
+<div class="contenedor">
+    <section id="aside">
+        {% include 'pagina/plantillas/aside.html' %}
+    </section>
+
+    <form action="{{ url_for('pagina.guardar')}}" method="post" class="form_cre">
+        <h2 class="Tituform">Datos de la persona a registrar</h2>
+
+        <div id="grid_form">
+            <div class="form_group">
+                <label for="lb_rol">Ingrese rol de la persona</label>
+
+                <select name="sl_rol" id="sl_rol" required>
+                    <option value="1">Administrador</option>
+                    <option value="2" selected>Estudiante</option>
+                    <option value="3">Profesor</option>
+                </select>
+            </div>
+
+            <div class="form_group">
+                <label for="lb_tipo_doc">Ingrese tipo de documento</label>
+
+                <select name="sl_tipo_doc" id="sl_tipo_doc" required>
+                    <option value="1">Registro civil</option>
+                    <option value="2" selected>Tajeta de identidad</option>
+                    <option value="3">Cedula de ciudadania</option>
+                    <option value="4">Cedula de extranjeria</option>
+                    <option value="5">Permiso especial de permanencia</option>
+                    <option value="6">Pasaporte</option>
+                </select>
+            </div>
+
+            <div class="form_group">
+                <label for="lb_usu">Ingrese nombre de usuario</label>
+
+                <input type="text" name="nom_usu" id="usu_nom" minlength="3" required>
+
+            </div>
+            <div class="form_group">
+                <label for="lb_email">Ingrese correo electronico</label>
+
+                <input type="email" name="correo_usu" id="" required>
+
+            </div>
+            <div class="form_group">
+                <label for="lb_password">Ingrese contraseña</label>
+
+                <input type="password" name="contrasena" id="" required>
+
+            </div>
+            <div class="form_group">
+                <label for="lb_local">Ingrese localidad donde vive</label>
+
+                <select name="sl_local" id="local_sl" required>
+                    <option value="1">Antonio nariño</option>
+                    <option value="2">Barrios unidos</option>
+                    <option value="3">Bosa</option>
+                    <option value="4">Chapinero</option>
+                    <option value="5">Ciudad bolívar</option>
+                    <option value="6">Engativá</option>
+                    <option value="7">Fontibón</option>
+                    <option value="8">Kennedy</option>
+                    <option value="9">La candelaria</option>
+                    <option value="10">Los mártires</option>
+                    <option value="11">Puente aranda</option>
+                    <option value="12">Rafael Uribe Uribe</option>
+                    <option value="13">San Cristóbal</option>
+                    <option value="14">Santa fe</option>
+                    <option value="15" selected>Suba</option>
+                    <option value="16">Sumapaz</option>
+                    <option value="17">Teusaquillo</option>
+                    <option value="18">Tunjuelito</option>
+                    <option value="19">Usaquén</option>
+                    <option value="20">Usme</option>
+                </select>
+            </div>
+
+            <div class="form_group">
+                <label for="lb_pri_nom">Ingrese primer nombre</label>
+
+                <input type="text" name="pri_nom" id="" required>
+
+            </div>
+
+            <div class="form_group">
+                <label for="lb_pri_ape">Ingrese primer apellido</label>
+
+                <input type="text" name="pri_ape" id="" required>
+
+            </div>
+
+            <div class="form_group">
+                <label for="lb_tel">Ingrese numero telefonico</label>
+
+                <input type="tel" name="tel" id="" required>
+
+            </div>
+
+            <div class="form_group">
+                <label for="lb_direc">Ingrese direccion</label>
+
+                <input type="text" name="direc" id="" required>
+
+            </div>
+
+            <div class="form_group">
+                <label for="lb_num_doc">Ingrese numero de documento</label>
+
+                <input type="number" name="num_doc" id="" required>
+
+            </div>
+
+            <div class="form_group todo_ancho">
+                <button type="submit" class="btn_resgis">Registrar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<section id="pie">
+    {% include 'pagina/plantillas/pie.html' %}
+</section>
+
+{% endblock %}

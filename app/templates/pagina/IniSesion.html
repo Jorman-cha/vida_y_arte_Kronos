@@ -1,0 +1,63 @@
+<!-- LLamar al layout -->
+
+{% extends 'layout.html' %}
+
+<!-- titulo de la pestaña -->
+{% block titulo %} Registrarse{% endblock %}
+
+{% block background_css %}
+<style>
+  body {
+    background:linear-gradient(rgba(0, 0, 0, 0.6)),
+    url("{{ url_for('static',filename='img/fondo.png')}}");
+
+    background-size: cover;
+
+
+  }
+</style>
+{% endblock %}
+<!-- informacion -->
+
+{% block informacion %}
+
+<!-- Llamar menu.html -->
+
+<section id="menu">
+  {% include 'pagina/plantillas/menu.html' %}
+</section>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div style="color: red;">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<section class="form">
+  <form action="{{ url_for('auth.registro') }}" method="POST">
+    <div class="mb-3">
+      <h2>
+        <center>Inicia sesión ahora</center>
+      </h2>
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+
+    <div class="mb-2 ">
+      <label for="inputPassword" class="col-sm-5 col-form-label">Password</label>
+      <div class="col-sm-15">
+        <input type="password" name="password"  class="form-control" id="inputPassword" required>
+      </div>
+      <button type="submit" class="btn btn-dark" id="Regist">Iniciar sesion</button>
+    </div>
+  </form>
+</section>
+<!-- h${texto $}*6 -->
+<!-- .row>.col-6+.col-6 -->
+
+
+<section id="pie">
+  {% include 'pagina/plantillas/pie.html' %}
+</section>
+
+{%endblock%}

@@ -1,0 +1,18 @@
+<nav class="navbar border-body" style="background-color: rgb(70,97,199); " data-bs-theme="light">
+  <div class="container-fluid" >
+    <a class="navbar-brand" id="logo" href="/">
+    <img src="{{url_for('static',filename='img/ViyAr.png')}}" alt="Logo" width="60" height="60" class="d-inline-block align-text-center">
+    kronos
+    {% if session.get('user_id') %}
+    <a class="btn btn-primary" href="{{ url_for('pagina.perfil') }}">
+            Hola, {{ session['user_name'] }}
+        </a>
+        <a class="btn btn-outline-light ms-2" href="{{ url_for('pagina.salir') }}">Salir</a>
+    {% else %}
+    </a>
+    <form class="d-flex" role="search">
+      <button type="button" class="btn btn-dark" id="IniSe"><a id="i" href="{{url_for('auth.registro')}}">Iniciar sesion</a></button>
+    </form>
+    {% endif %}
+  </div>
+</nav>

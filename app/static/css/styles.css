@@ -1,0 +1,234 @@
+
+/*General*/
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+html{
+    height: 100%;
+}
+body {
+    background-color: rgb(70,162,199);
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/*pie de pagina*/
+#pie{
+    background-color: rgb(65,97,199);
+    margin-top: auto;
+    
+}
+
+#Apie{
+    text-decoration: none;
+    font-size: 30px;
+    font-family: cursive;
+    color: rgb(255, 255, 255);
+}
+/*cabecera*/
+#IniSe, #Regi{
+    margin-right: 10px;
+}
+button > #i{
+    text-decoration: none;
+    color: white;
+}
+button > #r{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+#logo{
+    font-family:sans-serif;
+}
+.carousel-indicators #Info, 
+.carousel-indicators #Nove {
+    margin-bottom: 50px; 
+    display: inline-block; /
+}
+
+.carousel-indicators {
+    bottom: 150px;
+ }
+.carousel-caption{
+    margin-bottom: 100px; 
+}
+
+.carousel-item img{
+    height: 90vh;
+    object-fit: cover;
+}
+#Titu2{
+    margin: 100px;
+    text-align: center;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: right;
+    
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    text-align: center;
+        background:linear-gradient(
+        rgba(108, 113, 184,0.9),
+        rgba(140, 145, 214,0.9),
+        rgba(87, 94, 197,0.9)
+    );
+    margin:auto;
+    padding: 20px;
+    border-radius: 15px;
+    justify-content: center;
+    font-size: 1.2rem;
+    
+}
+/*Css Menu lateral*/
+.contenedor{
+    display: flex;
+    align-items: stretch;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.sidebar{
+    width: 250px;
+    min-height: 100vh;
+    transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: rgb(60, 139, 170);
+    white-space: nowrap;
+}
+.sidebar.collapsed{
+    width: 80px;
+    min-width: 80px;
+}
+.sidebar span{
+    margin-left: 4px;
+}
+
+.sidebar.collapsed span{
+    display: none;
+    
+}
+.sidebar #btn-toggle{
+    transition: transform 0.4s ease-in-out;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+}
+#navegar .toggle-btn{
+    margin: 15px;
+}
+#navegar.collapsed .toggle-btn{
+    transform: rotate(90deg);
+}
+.menu-lista a{
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    transition: background 0.3s ease;
+}
+.menu-lista a img{
+    display: flex;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+#navegar a:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+    padding-left: 25px;
+
+}
+#navegar a span{
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+/*Css perfil*/
+#perfilAd{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    flex-grow: 1;
+}
+
+/*Css Bus_Usu*/
+#BusUsu{
+    width: 100%;
+}
+.BusTabla{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1;
+}
+.TituBus{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*css cre_usu*/
+.form_cre{ 
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+}
+#grid_form{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /*Dos columnas iguales*/
+    gap:20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.form_group{
+    display: flex;
+    flex-direction: column;
+}
+.form_group label{
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;
+}
+.form_group input, .form_group select{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100%;
+}
+.todo_ancho{
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.btn_resgis{
+    padding: 12px 40px;
+    background-color: rgb(90, 231, 90);
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}

@@ -1,0 +1,14 @@
+<div class="contenedor">
+      <aside id="navegar" class="sidebar">
+    <div class="sidebar-header">
+      <button id="btn-toggle" class="toggle-btn"><img src="{{url_for('static',filename='img/menu-burger.png')}}" alt="User"></button>
+    </div>
+
+    <nav class="menu-lista">
+      <a href="{{ url_for('pagina.cre_usu') }}"><img src="{{url_for('static',filename='img/user.png')}}" alt="User"> <span>Crear usuario</span></a>
+      <a href="{{ url_for('pagina.bus_usu') }}"><img src="{{url_for('static',filename='img/search.png')}}" alt="User">  <span>Buscar usuario</span></a>
+      <a href="#"><img src="{{url_for('static',filename='img/edit.png')}}" alt="User">  <span>Crear horario</span></a>
+      <a href="#"><img src="{{url_for('static',filename='img/horarioBuscar.png')}}" alt="User">  <span>Buscar horario</span></a>
+    </nav>
+  </aside>
+</div>

@@ -1,0 +1,27 @@
+<!-- LLamar al layout -->
+
+{% extends 'layout.html' %}
+
+<!-- titulo de la pestaña -->
+{% block titulo %} Inicio de Sesion{% endblock %}
+
+<!-- informacion -->
+
+{% block informacion %}
+
+<!-- Llamar menu.html -->
+
+<section id="menu">
+  {% include 'pagina/plantillas/menu.html' %}
+</section>
+
+
+<!-- h${texto $}*6 -->
+<!-- .row>.col-6+.col-6 -->
+
+
+<section id="pie">
+  {% include 'pagina/plantillas/pie.html' %}
+</section>
+
+{%endblock%}
