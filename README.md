@@ -12,8 +12,8 @@
 
 **Kronos** es una solución tecnológica diseñada para modernizar la administración de la **Fundación Vida y Arte** (Barrios Unidos, Bogotá), institución que ofrece cursos de música organizados en dos programas:
 
-- 🎓 **Líderes** – Formación teórica e integral del estudiante.
-- 🎸 **Instrumentos** – Práctica de violín, guitarra, piano, saxofón, batería y más.
+- 🎓 **Líderes** – Formación teórica e integral del estudiante (10 semestres, 65 materias).
+- 🎸 **Instrumentos** – Práctica de violín, técnica vocal, guitarra y más.
 
 El sistema centraliza la información de estudiantes, profesores, materias e instrumentos, garantizando la integridad de los datos mediante una arquitectura de base de datos normalizada (**3NF**). El aplicativo ofrece interfaces personalizadas según el rol del usuario (RBAC), permitiendo un control total del flujo académico para administradores, mientras que docentes y alumnos acceden a sus horarios en tiempo real.
 
@@ -21,13 +21,15 @@ El sistema centraliza la información de estudiantes, profesores, materias e ins
 
 ## ✨ Funcionalidades Principales
 
-* 🔐 **Sistema de Roles (RBAC):** Paneles diferenciados para Administrador, Profesor y Estudiante.
-* 📅 **Motor de Horarios:** Gestión y asignación de clases vinculadas a salones y docentes para evitar cruces.
+* 🔐 **Autenticación segura:** Login con verificación de credenciales y hash de contraseñas (`werkzeug`).
+* 👥 **Sistema de Roles (RBAC):** Paneles diferenciados para Administrador, Profesor y Estudiante.
+* 📅 **Motor de Horarios:** Gestión de horarios vinculados a usuarios, instrumentos y salones.
 * 🎼 **Segmentación por Programas:** Control independiente para **Líderes** (Teórico) e **Instrumentos** (Práctico).
-* 👤 **Gestión de Usuarios (CRUD):** Registro, búsqueda, edición y eliminación de perfiles desde panel administrativo.
-* 🗂️ **Formulario de Registro Completo:** Captura de rol, tipo de documento, localidad, datos de contacto y credenciales.
+* 👤 **Gestión de Usuarios (CRUD):** Registro completo con rol, tipo de documento, localidad y credenciales.
 * 🌐 **Portal Informativo:** Landing page con carrusel de imágenes y tarjetas de próximos eventos.
-* 📱 **Sidebar Colapsable:** Menú lateral con animación suave para una navegación más cómoda.
+* 📱 **Sidebar Colapsable:** Menú lateral con animación suave y transición CSS.
+* 🔔 **Confirmaciones con SweetAlert2:** Ventanas emergentes antes de registrar o eliminar datos.
+* 🚪 **Cierre de sesión:** Limpieza completa de sesión con redirección a la página principal.
 
 ---
 
@@ -38,57 +40,106 @@ El sistema centraliza la información de estudiantes, profesores, materias e ins
 | **Frontend** | HTML5, CSS3, JavaScript | UI dinámica y lógica del lado del cliente |
 | **Backend** | **Flask** (Python) | Lógica de servidor, ruteo y Blueprints |
 | **Plantillas** | Jinja2 | Renderizado dinámico y herencia de componentes |
-| **Estilos** | Bootstrap 5 | Maquetación visual responsiva |
-| **Base de Datos** | **MySQL** | Almacenamiento relacional (Normalización 3NF) |
+| **Estilos** | Bootstrap 5 + CSS personalizado | Maquetación visual responsiva |
+| **Alertas** | SweetAlert2 | Confirmaciones y notificaciones interactivas |
+| **Base de Datos** | **MySQL** (`gestion_horarios`) | Almacenamiento relacional (Normalización 3NF) |
+| **Seguridad** | Werkzeug (`generate_password_hash`) | Hash seguro de contraseñas |
 
 ---
 
 ## 📁 Estructura del Proyecto
 
 ```text
-kronos/
+VIDA_Y_ARTE_KRONOS-MASTER/
 │
-├── run.py                        # Punto de entrada — crea y lanza la app Flask
+├── run.py                        # Punto de entrada — registra blueprints y lanza la app
 ├── rundb.py                      # Script de verificación de conexión a la BD
 ├── requirements.txt              # Dependencias del proyecto
-├── iniciar_kronos.bat            # Script de arranque rápido (Windows)
-│
-├── database/                     # Scripts SQL de la base de datos
-├── docs/                         # Documentación del proyecto
+├── .gitignore                    # Archivos excluidos del repositorio
 │
 └── app/
-    ├── config.py                 # Configuración de la BD (puerto, credenciales)
+    ├── config.py                 # Configuración de la BD (host, puerto, credenciales)
     │
-    ├── blueprints/               # Módulos de rutas organizados por Blueprint
-    ├── controllers/              # Lógica de control por entidad
-    ├── data_structures/          # Estructuras de datos personalizadas
-    ├── models/                   # Modelos que representan las tablas de la BD
-    ├── repositories/             # Acceso y consultas a la base de datos
-    ├── services/                 # Lógica de negocio
-    ├── utils/                    # Utilidades generales (ej: ConexionBaseDatos)
+    ├── blueprints/
+    │   ├── auth/
+    │   │   └── routes.py         # Blueprint auth_bp — rutas de login
+    │   └── pagina/
+    │       └── pagina.py         # Blueprint pagina_bp — rutas principales
+    │
+    ├── models/
+    │   ├── administrador.py      # Modelo CRUD de usuarios (obtener, crear)
+    │   ├── login.py              # Modelo de autenticación con hash werkzeug
+    │   └── profesor.py           # Modelo del perfil profesor
+    │
+    ├── utils/
+    │   ├── db.py                 # Singleton ConexionBaseDatos (mysql-connector)
+    │   ├── config.py             # Configuración interna de utils
+    │   └── __init__.py
     │
     ├── static/
     │   ├── css/
     │   │   └── styles.css        # Estilos globales, sidebar, formularios, tablas
     │   ├── js/
-    │   │   └── scripts.js        # Toggle del sidebar colapsable
-    │   └── img/                  # Imágenes (carrusel, íconos, foto de perfil, logo)
+    │   │   └── scripts.js        # Sidebar toggle + validación de formularios + SweetAlert2
+    │   └── img/                  # Imágenes (carrusel, logo, foto de perfil)
     │
     └── templates/
-        ├── layout.html           # Plantilla base (Bootstrap, CSS, JS)
-        ├── aplicacion/           # Vistas del sistema interno
-        ├── auth/                 # Vistas de autenticación
-        ├── includes/             # Fragmentos reutilizables globales
+        ├── layout.html           # Plantilla base (Bootstrap 5, CSS, JS, SweetAlert2)
         └── pagina/
             ├── principal.html    # Landing page con carrusel y tarjetas de eventos
-            ├── perfil.html       # Dashboard del usuario con sidebar y foto de perfil
+            ├── perfil.html       # Dashboard del usuario autenticado con sidebar
             ├── bus_usu.html      # Tabla de búsqueda y gestión de usuarios
             ├── cre_usu.html      # Formulario de creación de usuarios
             ├── IniSesion.html    # Formulario de inicio de sesión
             ├── novedades.html    # Página de novedades
-            ├── info.html         # Página de información de la fundación
-            └── plantillas/       # Componentes reutilizables (menu, pie, aside)
+            ├── info.html         # Información de la fundación
+            └── plantillas/
+                ├── menu.html     # Barra de navegación superior
+                ├── aside.html    # Sidebar colapsable
+                └── pie.html      # Pie de página
 ```
+
+---
+
+## 🗄️ Base de Datos
+
+**Nombre:** `gestion_horarios` · **Motor:** MariaDB / MySQL · **Puerto:** 3306
+
+| Tabla | Descripción |
+| :--- | :--- |
+| `usuarios` | Credenciales de acceso + estado (activo/inactivo/suspendido) |
+| `persona` | Datos personales vinculados a cada usuario |
+| `rol` | Roles del sistema: Administrador, Estudiante, Profesor |
+| `p_rol` | Relación persona–rol (tabla pivote) |
+| `estado` | Estados posibles de un usuario |
+| `programa` | Programas académicos: Líderes e Instrumentos |
+| `materia` | 65 materias distribuidas en 10 semestres (programa Líderes) |
+| `semestre` | Semestres I al X |
+| `faceta` | Facetas académicas: Artística, Humana, Pedagógica |
+| `instrumento` | Instrumentos del programa Instrumentos |
+| `horario` | Horarios vinculados a usuario, instrumento y salón |
+| `salon` | Salones disponibles |
+| `nivel` | Niveles: Básico, Intermedio, Avanzado |
+| `localidad` | 20 localidades de Bogotá |
+| `tipo_documento` | Tipos de documento (CC, TI, CE, etc.) |
+| `profesor_instru` | Relación profesor–instrumento |
+| `usuario_progr` | Relación usuario–programa |
+
+---
+
+## 🗺️ Rutas del Sistema
+
+| Ruta | Blueprint | Descripción |
+| :--- | :--- | :--- |
+| `/` | `pagina_bp` | Landing page principal |
+| `/inicio` | `auth_bp` | Login (GET) y autenticación (POST) |
+| `/perfil` | `pagina_bp` | Dashboard del usuario autenticado |
+| `/Buscar_Usuario` | `pagina_bp` | Listado y gestión de usuarios |
+| `/Crear_Usuario` | `pagina_bp` | Formulario de registro |
+| `/guardar` | `pagina_bp` | Procesamiento del formulario (POST) |
+| `/informacion` | `pagina_bp` | Información de la fundación |
+| `/novedades` | `pagina_bp` | Novedades y anuncios |
+| `/salir` | `pagina_bp` | Cierre de sesión |
 
 ---
 
@@ -96,15 +147,15 @@ kronos/
 
 ### Requisitos previos
 - Python 3.x
-- XAMPP con MySQL activo
+- XAMPP con MySQL activo (puerto **3306**)
 - pip
 
 ### Pasos
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/tu-usuario/kronos.git
-cd kronos
+git clone https://github.com/tu-usuario/VIDA_Y_ARTE_KRONOS.git
+cd VIDA_Y_ARTE_KRONOS
 
 # 2. Crear y activar entorno virtual
 python -m venv venv
@@ -119,7 +170,7 @@ pip install -r requirements.txt
 
 # 4. Configurar la base de datos
 # · Iniciar XAMPP y activar el servicio MySQL
-# · Crear la base de datos desde phpMyAdmin
+# · Crear la base de datos: gestion_horarios
 # · Importar el archivo SQL del directorio /database/
 
 # 5. Verificar conexión a la BD
@@ -129,23 +180,7 @@ python rundb.py
 python run.py
 ```
 
-> En Windows también puedes usar el acceso directo **`iniciar_kronos.bat`** para arrancar el proyecto directamente.
-
 Abre tu navegador en: `http://127.0.0.1:5000`
-
----
-
-## 🗺️ Vistas del Sistema
-
-| Ruta | Vista | Descripción |
-| :--- | :--- | :--- |
-| `/` | `principal.html` | Landing page con carrusel y eventos |
-| `/perfil` | `perfil.html` | Dashboard del usuario autenticado |
-| `/buscar` | `bus_usu.html` | Listado y gestión de usuarios |
-| `/crear` | `cre_usu.html` | Registro de nuevos usuarios |
-| `/login` | `IniSesion.html` | Inicio de sesión |
-| `/info` | `info.html` | Información de la fundación |
-| `/novedades` | `novedades.html` | Novedades y anuncios |
 
 ---
 
