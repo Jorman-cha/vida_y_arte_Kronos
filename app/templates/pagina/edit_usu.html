@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+{% block informacion %}
+<section id="menu">
+    {% include 'pagina/plantillas/menu.html' %}
+</section>
+<div class="contenedor">
+    <section id="aside">
+        {% include 'pagina/plantillas/aside.html' %}
+    </section>
+    <div class="form_cre">
+        <h2>Modificar Información del Usuario</h2>
+
+        <form action="{{ url_for('pagina.actualizar_usuario', id_usu=usuario.id_usu) }}" method="POST">
+            <div id="grid_form">
+
+                <div class="form_group">
+                    <label>Nombre de Usuario</label>
+                    <input type="text" name="nom_usu" value="{{ usuario.nom_usu }}" required>
+                </div>
+
+                <div class="form_group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" name="correo_usu" value="{{ usuario.correo_usu }}" required>
+                </div>
+
+                <div class="form_group">
+                    <label>Contraseña (Opcional)</label>
+                    <input type="password" name="contrasena"
+                        placeholder="Escribe una nueva contraseña si deseas cambiarla">
+                </div>
+
+                <div class="form_group">
+                    <label>Tipo de Documento</label>
+                    <select name="sl_tipo_doc" required>
+                        <option value="1" {% if usuario.id_tipo_doc==1 %}selected{% endif %}>Registro civil</option>
+                        <option value="2" {% if usuario.id_tipo_doc==2 %}selected{% endif %}>Tajeta de identidad
+                        </option>
+                        <option value="3" {% if usuario.id_tipo_doc==3 %}selected{% endif %}>Cedula de ciudadania
+                        </option>
+                        <option value="4" {% if usuario.id_tipo_doc==4 %}selected{% endif %}>Cedula de extranjeria
+                        </option>
+                        <option value="5" {% if usuario.id_tipo_doc==5 %}selected{% endif %}>Permiso especial de
+                            permanencia</option>
+                        <option value="6" {% if usuario.id_tipo_doc==6 %}selected{% endif %}>Pasaporte</option>
+                    </select>
+                </div>
+
+                <div class="form_group">
+                    <label>Número de Documento</label>
+                    <input type="text" name="num_doc" value="{{ usuario.num_doc }}" required>
+                </div>
+
+                <div class="form_group">
+                    <label>Primer Nombre</label>
+                    <input type="text" name="primer_nombre" value="{{ usuario.primer_nombre }}" required>
+                </div>
+
+                <div class="form_group">
+                    <label>Primer Apellido</label>
+                    <input type="text" name="primer_apelli" value="{{ usuario.primer_apelli }}" required>
+                </div>
+
+                <div class="form_group">
+                    <label>Teléfono</label>
+                    <input type="tel" name="telefono" value="{{ usuario.telefono }}">
+                </div>
+
+                <div class="form_group">
+                    <label>Dirección</label>
+                    <input type="text" name="direccion" value="{{ usuario.direccion }}">
+                </div>
+
+                <div class="form_group">
+                    <label>Sede / Local</label>
+                    <select name="id_local" required>
+                        <option value="1" {% if usuario.id_tipo_doc==1 %}selected{% endif %}>Antonio nariño</option>
+                        <option value="3" {% if usuario.id_tipo_doc==2 %}selected{% endif %}>Bosa</option>
+                        <option value="2" {% if usuario.id_tipo_doc==3 %}selected{% endif %}>Barrios unidos</option>
+                        <option value="4" {% if usuario.id_tipo_doc==4 %}selected{% endif %}>Chapinero</option>
+                        <option value="5" {% if usuario.id_tipo_doc==5 %}selected{% endif %}>Ciudad bolívar</option>
+                        <option value="6" {% if usuario.id_tipo_doc==6 %}selected{% endif %}>Engativá</option>
+                        <option value="7" {% if usuario.id_tipo_doc==7 %}selected{% endif %}>Fontibón</option>
+                        <option value="8" {% if usuario.id_tipo_doc==8 %}selected{% endif %}>Kennedy</option>
+                        <option value="9" {% if usuario.id_tipo_doc==9 %}selected{% endif %}>La candelaria</option>
+                        <option value="10" {% if usuario.id_tipo_doc==10 %}selected{% endif %}>Los mártires</option>
+                        <option value="11" {% if usuario.id_tipo_doc==11 %}selected{% endif %}>Puente aranda</option>
+                        <option value="12" {% if usuario.id_tipo_doc==12 %}selected{% endif %}>Rafael Uribe Uribe
+                        </option>
+                        <option value="13" {% if usuario.id_tipo_doc==13 %}selected{% endif %}>San Cristóbal</option>
+                        <option value="14" {% if usuario.id_tipo_doc==14 %}selected{% endif %}>Santa fe</option>
+                        <option value="15" {% if usuario.id_tipo_doc==15 %}selected{% endif %}>Suba</option>
+                        <option value="16" {% if usuario.id_tipo_doc==16 %}selected{% endif %}>Sumapaz</option>
+                        <option value="17" {% if usuario.id_tipo_doc==17 %}selected{% endif %}>Teusaquillo</option>
+                        <option value="18" {% if usuario.id_tipo_doc==18 %}selected{% endif %}>Tunjuelito</option>
+                        <option value="19" {% if usuario.id_tipo_doc==19 %}selected{% endif %}>Usaquén</option>
+                        <option value="20" {% if usuario.id_tipo_doc==20 %}selected{% endif %}>Usme</option>
+                    </select>
+                </div>
+
+                <div class="form_group">
+                    <label>Rol asignado</label>
+                    <select name="cb_rol" required>
+                        <option value="1" {% if usuario.id_tipo_doc==1 %}selected{% endif %}>Administrador</option>
+                        <option value="2" {% if usuario.id_tipo_doc==2 %}selected{% endif %}>Estudiante</option>
+                        <option value="3" {% if usuario.id_tipo_doc==3 %}selected{% endif %}>Profesor</option>
+                    </select>
+                </div>
+
+                <div class="form_group todo_ancho">
+                    <button type="submit" class="btn btn-primary">Actualizar Registro</button>
+                    <a href="{{ url_for('pagina.bus_usu') }}" class="btn btn-secondary">Cancelar</a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

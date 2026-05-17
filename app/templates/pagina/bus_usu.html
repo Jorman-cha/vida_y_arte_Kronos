@@ -37,14 +37,18 @@
                 <tbody>
                     {% for u in usuarios %}
                     <tr>
-                        <th scope="row">{{ u.id }}</th>
-                        <td>{{ u.nombre }}</td>
-                        <td>{{ u.correo }}</td>
-                        <td>{{ u.password }}</td>
+                        <th scope="row">{{ loop.index}}</th>
+                        <td>{{ u.nom_usu }}</td>
+                        <td>{{ u.correo_usu }}</td>
+                        <td>{{ u.password_usu }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-success">Editar</button>
-                                <button type="button" class="btn btn-danger">Eliminar</button>
+                                <a href="{{ url_for('pagina.editar_usu', id_usu=u.id_usu) }}"
+                                    class="btn btn-warning btn-sm">Editar</a>
+                                <form action="{{ url_for('pagina.eliminar_usu', id_usu=u.id_usu) }}"
+                                    method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
                             </div>
                         </td>
                     </tr>

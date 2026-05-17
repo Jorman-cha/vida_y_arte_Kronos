@@ -54,7 +54,16 @@
 </section>
 <!-- h${texto $}*6 -->
 <!-- .row>.col-6+.col-6 -->
-
+<script>
+    // Detecta si el usuario llegó a esta página usando los botones Atrás/Adelante
+    window.addEventListener('pageshow', function (event) {
+        // El atributo persisted es verdadero si la página se cargó desde la caché del navegador
+        if (event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) {
+            // Forzar recarga total de la página desde el servidor
+            window.location.reload();
+        }
+    });
+</script>
 
 <section id="pie">
   {% include 'pagina/plantillas/pie.html' %}

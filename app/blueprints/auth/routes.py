@@ -20,3 +20,4 @@ def registro():
         return redirect(url_for('auth.registro'))
 
     return render_template("pagina/IniSesion.html")
+
